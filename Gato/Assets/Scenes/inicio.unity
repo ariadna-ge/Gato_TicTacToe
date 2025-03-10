@@ -633,7 +633,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 872576000}
         m_TargetAssemblyTypeName: Navegacion, Assembly-CSharp
-        m_MethodName: ejecutarJuego
+        m_MethodName: EjecutarJuego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -879,8 +879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ca0719e968bcd43a55630533a59a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoParpadeante: {fileID: 1334300114}
-  velocidadParpadeo: 0.5
+  text: {fileID: 1334300114}
+  parpadeo: 0.5
 --- !u!1 &1334300112
 GameObject:
   m_ObjectHideFlags: 0

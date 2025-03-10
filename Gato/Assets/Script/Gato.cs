@@ -14,7 +14,7 @@ public class Gato : MonoBehaviour
     private int ganador = 0, movimientos= 0; //almacena el ganador y número de movimientos
 
     void Start(){
-        InicarGato(); //llama a la función para inicializar el juego
+        IniciarGato(); //llama a la función para inicializar el juego
         txtJuego.text = "JUEGO NUEVO";
     }
 
@@ -158,7 +158,7 @@ public class Gato : MonoBehaviour
     }
     }
 
-    private void InicarGato(){
+    private void IniciarGato(){
         // inicia la matriz en ceros
         for(int i= 0; i<3; i++){
             for(int j=0; j<3; j++){
