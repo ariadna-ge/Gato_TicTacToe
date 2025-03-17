@@ -4,16 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+
 public class Navegacion : MonoBehaviour
+
 {
-    public void EjecutarInicio(){
-        SceneManager.LoadScene("Inicio");
-    }
-
-    public void EjecutarJuego(){
-        SceneManager.LoadScene("Main");
-    }
-
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space)){
             SceneManager.LoadScene("Main");
