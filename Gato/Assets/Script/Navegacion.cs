@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Navegacion : MonoBehaviour
 
 {
+
     void Update(){
         if (Input.GetKeyDown(KeyCode.Space)){
             SceneManager.LoadScene("Main");
