@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Gato : MonoBehaviour
 {
+    public Musica musica; // Referencia al script de música
     public Button btn;
     public Text txtJuego;
 
@@ -13,9 +14,16 @@ public class Gato : MonoBehaviour
     private int turno = 0; // controla el turno del jugador 0=no ha iniciado
     private int ganador = 0, movimientos= 0; //almacena el ganador y número de movimientos
 
+    
+
     void Start(){
+
         IniciarGato(); //llama a la función para inicializar el juego
         txtJuego.text = "JUEGO NUEVO";
+        
+        // Busca el script de música en la escena si no está asignado
+        if (musica == null)
+            musica = FindObjectOfType<Musica>();
     }
 
     public void AsignaTurno(Button btn){
@@ -32,6 +40,15 @@ public class Gato : MonoBehaviour
             DibujaSimbolo(btn, turno);
             EscribirValorMatrizGato(btn.name, turno);
             movimientos++;
+
+            // **Reproducir sonido dependiendo del turno**
+            if (turno == 1 && musica != null){
+                musica.ClickAudioX(); // Sonido para "X"
+            } 
+            else if (turno == 2 && musica != null){
+                musica.ClickAudioO(); // Sonido para "O"
+            }
+
             VerificaGanador();
         }
     }
@@ -115,34 +132,42 @@ public class Gato : MonoBehaviour
     for (int i = 0; i < 3; i++) { // Verificar filas
         if (matrizGato[i, 0] == 1 && matrizGato[i, 1] == 1 && matrizGato[i, 2] == 1){
             ganador = 1; // Gana x
+            musica.GanadorAudio(); 
         }
         if (matrizGato[i, 0] == 2 && matrizGato[i, 1] == 2 && matrizGato[i, 2] == 2){
             ganador = 2; // Gana o
+            musica.GanadorAudio(); 
         }
     }
     for (int i = 0; i < 3; i++) { // Verificar columnas
         if (matrizGato[0, i] == 1 && matrizGato[1, i] == 1 && matrizGato[2, i] == 1){
             ganador = 1; // Gana x
+            musica.GanadorAudio(); 
         }
         if (matrizGato[0, i] == 2 && matrizGato[1, i] == 2 && matrizGato[2, i] == 2){
             ganador = 2; // Gana o
+            musica.GanadorAudio(); 
         }
     }
 
     // Verificar diagonal principal
     if (matrizGato[0, 0] == 1 && matrizGato[1, 1] == 1 && matrizGato[2, 2] == 1){
         ganador = 1; // Gana x
+        musica.GanadorAudio(); 
     }
     if (matrizGato[0, 0] == 2 && matrizGato[1, 1] == 2 && matrizGato[2, 2] == 2){
         ganador = 2; // Gana o
+        musica.GanadorAudio(); 
     }
 
     // Verificar diagonal inversa
     if (matrizGato[0, 2] == 1 && matrizGato[1, 1] == 1 && matrizGato[2, 0] == 1){
         ganador = 1; // Gana x
+        musica.GanadorAudio(); 
     }
     if (matrizGato[0, 2] == 2 && matrizGato[1, 1] == 2 && matrizGato[2, 0] == 2){
         ganador = 2; // Gana o
+        musica.GanadorAudio(); 
     }
 
     if (ganador == 0 && movimientos == 9){
@@ -176,4 +201,5 @@ public class Gato : MonoBehaviour
         GameObject.Find("G7").GetComponentInChildren<Text>().text = "";
         GameObject.Find("G8").GetComponentInChildren<Text>().text = "";
     }
+    
 }
